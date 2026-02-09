@@ -1,0 +1,45 @@
+:root {
+    --gold: #B89146;
+    --dark: #1A1A1A;
+    --cream: #FCFBFA;
+    --gray: #757575;
+}
+
+
+.container {
+    padding: 10px;
+    padding: 40px 5%;
+    position: relative;
+}
+
+.searchForm {
+    margin-top: 40px;
+    margin-bottom: 30px;
+    display: flex;
+    gap: 10px;
+    position: sticky;
+}
+
+.searchForm input {
+    flex: 1;
+    padding: 12px 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 100%;
+}
+
+
+.searchForm input:focus {
+    outline: none;
+    border-color: F5F5DC;
+    box-shadow: 0 0 5px rgba(184, 145, 70, 0.5);
+}
+
+
+@media (min-width: 1024px) {
+    .container {
+        max-width: fit-content;
+        padding: 20px 10%;
+    }
+}

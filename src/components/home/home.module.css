@@ -29,9 +29,6 @@ h4,
     font-family: 'Playfair Display', serif;
 }
 
-/* .home {
-    background-color: #EDE8D0;
-} */
 
 .container {}
 
@@ -199,7 +196,6 @@ h4,
         background:
             url('/src/assets/images/hero_background_image.jpg');
         background-size: contain;
-        background-position: center;
         background-repeat: no-repeat;
     }
 

@@ -29,9 +29,9 @@ h4,
     font-family: 'Playfair Display', serif;
 }
 
-.home {
+/* .home {
     background-color: #EDE8D0;
-}
+} */
 
 .container {}
 
@@ -177,7 +177,6 @@ h4,
 
 .homeCatalog {
     padding: 20px 5%;
-    background-color: #EDE8D0;
 }
 
 

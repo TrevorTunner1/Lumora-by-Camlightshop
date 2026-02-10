@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Footer from '../Footer/Footer';
-import styles from './about.module.css';
+import styles from './About.module.css';
 
 const About = () => {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -64,8 +64,8 @@ const About = () => {
                     <li className={styles.text}>Sustainability: Responsible sourcing and production</li>
                     <li className={styles.text}>Community: Building relationships with our customers</li>
                 </ul>
-                <Footer />
             </section>
+            <Footer />
         </>
     )
 }

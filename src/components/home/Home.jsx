@@ -3,6 +3,7 @@ import styles from './home.module.css';
 import Navbar from '../Navbar/Navbar';
 import Categories from '../categories/Categories';
 import Footer from '../Footer/Footer';
+import Products from '../product/Products';
 
 const HERO_SLIDES = [
     {
@@ -69,12 +70,18 @@ const Home = () => {
                 </div>
             </div>
 
+            <header className={styles.header}>
+                <span className={styles.subtitle}>Curated Selection</span>
+                <h3 className={styles.headerTitle}>Lumora by camshoplight</h3>
+            </header>
+
             <section id="catalog" className={styles.homeCatalog}>
-                <Categories
-                // activeCategory={activeCategory}
-                // setActiveCategory={setActiveCategory}
-                // searchTerm={searchTerm}
-                />
+                {/* <Categories
+                activeCategory={activeCategory}
+                setActiveCategory={setActiveCategory}
+                searchTerm={searchTerm}
+                /> */}
+                <Products />
             </section>
             <Footer />
         </div>

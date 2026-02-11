@@ -5,14 +5,23 @@ import styles from './navbar.module.css';
 
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
+    const [isSearchOpen, setIsSearchOpen] = useState(false);
     const { cartCount, setShowCart } = useCart();
 
-    const toggleMenu = () => setMenuOpen(!menuOpen);
+    const toggleMenu = () => {
+        setMenuOpen(!menuOpen);
+        if (isSearchOpen) setIsSearchOpen(false); // Close search if menu opens
+    };
+
+    const toggleSearch = () => {
+        setIsSearchOpen(!isSearchOpen);
+        if (menuOpen) setMenuOpen(false); // Close menu if search opens
+    };
 
     return (
         <nav className={styles.navbar}>
-            {/* 1. Brand Logo */}
-            <Link to="/" className={styles['brand-name']}>
+            {/* 1. Brand Logo - Hidden on mobile when search is expanded */}
+            <Link to="/" className={`${styles['brand-name']} ${isSearchOpen ? styles.hideBrand : ''}`}>
                 LAMOURA
             </Link>
 
@@ -24,15 +33,26 @@ const Navbar = () => {
                 <li><a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a></li>
             </ul>
 
-            {/* 3. Actions (Search + Cart + Mobile Menu) */}
+            {/* 3. Actions */}
             <div className={styles['nav-actions']}>
-                <div className={styles['search-container']}>
-                    <svg className={styles['search-icon']} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                    </svg>
-                    <input type="text" placeholder="Search products..." className={styles['search-input']} />
+                {/* Animated Search Container */}
+                <div className={`${styles['search-container']} ${isSearchOpen ? styles.searchExpanded : ''}`}>
+                    <button className={styles['search-trigger']} onClick={toggleSearch} aria-label="Toggle search">
+                        {isSearchOpen ? (
+                            <svg className={styles['search-icon']} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                        ) : (
+                            <svg className={styles['search-icon']} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                        )}
+                    </button>
+                    <input
+                        type="text"
+                        placeholder="Search our collection..."
+                        className={styles['search-input']}
+                        autoFocus={isSearchOpen}
+                    />
                 </div>
 
+                {/* Cart Icon */}
                 <button onClick={() => setShowCart(true)} className={styles['cart-link']} aria-label="View cart">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className={styles['cart-svg']}>
                         <circle cx="9" cy="21" r="1"></circle>
@@ -42,10 +62,11 @@ const Navbar = () => {
                     {cartCount > 0 && <span className={styles['cart-count']}>{cartCount}</span>}
                 </button>
 
+                {/* Hamburger */}
                 <button className={styles.hamburger} onClick={toggleMenu}>
-                    <div className={styles['hamburger-line']}></div>
-                    <div className={styles['hamburger-line']}></div>
-                    <div className={styles['hamburger-line']}></div>
+                    <div className={`${styles['hamburger-line']} ${menuOpen ? styles.lineRotate1 : ''}`}></div>
+                    <div className={`${styles['hamburger-line']} ${menuOpen ? styles.lineFade : ''}`}></div>
+                    <div className={`${styles['hamburger-line']} ${menuOpen ? styles.lineRotate2 : ''}`}></div>
                 </button>
             </div>
         </nav>

@@ -129,6 +129,13 @@
     transition: width 0.3s;
 }
 
+.header {
+    text-align: center;
+    margin-block: 40px;
+}
+
+
+
 /* Desktop Scale Up */
 @media (min-width: 1024px) {
     .heroContainer {

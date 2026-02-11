@@ -82,6 +82,9 @@ const Home = () => {
                 searchTerm={searchTerm}
                 /> */}
                 <Products />
+                <div className={styles.viewAll}>
+                    <a href="#" className={styles.view}>VIEW ALL PRODUCT</a>
+                </div>
             </section>
             <Footer />
         </div>

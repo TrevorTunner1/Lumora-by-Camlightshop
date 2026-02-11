@@ -4,6 +4,7 @@ import styles from "./product.module.css";
 
 const whatsappNumber = "09137671904";
 
+// ... (Your PRODUCTS array remains the same)
 const PRODUCTS = [
     {
         id: 1,
@@ -162,27 +163,21 @@ const PRODUCTS = [
 const Products = () => {
     const { cart, showCart, setShowCart, addToCart, removeFromCart, updateQuantity } = useCart();
 
-    // Logic to split products into the 3 sections
     const newArrivals = PRODUCTS.slice(0, 6);
     const bestSelling = PRODUCTS.slice(6, 12);
-    const modernClassics = PRODUCTS.slice(12, 19); // The "one you can think of" section
+    const modernClassics = PRODUCTS.slice(12, 19);
 
     const sendCartToWhatsApp = () => {
-        if (cart.length === 0) {
-            alert("Your cart is empty!");
-            return;
-        }
+        if (cart.length === 0) return;
         let message = "Hello Lamoura, I am interested in:\n\n";
-        cart.forEach((item, index) => {
-            message += `${index + 1}. ${item.name} (x${item.quantity}) - ₦${item.price}\n`;
+        cart.forEach((item) => {
+            message += `- ${item.name} (x${item.quantity})\n`;
         });
-        const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-        window.open(url, '_blank');
+        window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank');
     };
 
-    // Helper component to render a horizontal row
     const ProductRow = ({ title, items }) => (
-        <section className={styles.sectionWrapper}>
+        <> <section className={styles.sectionWrapper}>
             <h2 className={styles.sectionTitle}>{title}</h2>
             <div className={styles.horizontalScroll}>
                 {items.map(product => (
@@ -192,38 +187,87 @@ const Products = () => {
                         </div>
                         <div className={styles.productInfo}>
                             <h3>{product.name}</h3>
-                            <p className={styles.productDesc}>{product.desc}</p>
                             <span className={styles.productPrice}>₦{product.price}</span>
-                            <button
-                                onClick={() => addToCart(product)}
-                                className={styles.whatsappBtn}
-                            >
-                                🛒 Add to Cart
+                            <button onClick={() => addToCart(product)} className={styles.whatsappBtn}>
+                                Add to Cart
                             </button>
                         </div>
                     </div>
                 ))}
             </div>
+
         </section>
+            <section className={styles.sectionWrapper}>
+                <h2 className={styles.sectionTitle}>{title}</h2>
+                <div className={styles.horizontalScroll}>
+                    {items.map(product => (
+                        <div key={product.id} className={styles.productCard}>
+                            <div className={styles.imageContainer}>
+                                <img src={product.image} alt={product.name} />
+                            </div>
+                            <div className={styles.productInfo}>
+                                <h3>{product.name}</h3>
+                                <span className={styles.productPrice}>₦{product.price}</span>
+                                <button onClick={() => addToCart(product)} className={styles.whatsappBtn}>
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+            </section>
+
+        </>
+
     );
 
     return (
-        <div style={{ backgroundColor: '#fff', padding: '40px 0' }}>
-            {/* Cart Sidebar Logic (Keep exactly as you had it) */}
+        <div style={{ backgroundColor: '#fff', padding: '20px 0' }}>
+
+            {/* FIX: Complete Cart Sidebar */}
             {showCart && (
                 <>
                     <div onClick={() => setShowCart(false)} style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100vh', backgroundColor: 'rgba(0,0,0,0.5)', zIndex: 999 }} />
-                    <div style={{ position: 'fixed', top: 0, right: 0, width: '100%', maxWidth: '400px', height: '100vh', backgroundColor: 'white', zIndex: 1000, padding: '20px', overflowY: 'auto' }}>
-                        <h2>Your Cart ({cart.length})</h2>
-                        {/* ... mapping cart items ... */}
-                        <button onClick={sendCartToWhatsApp} style={{ width: '100%', backgroundColor: '#25D366', color: 'white', padding: '15px', borderRadius: '8px', cursor: 'pointer', border: 'none', fontWeight: 'bold' }}>
-                            Send Order via WhatsApp
-                        </button>
+                    <div style={{ position: 'fixed', top: 0, right: 0, width: '100%', maxWidth: '350px', height: '100vh', backgroundColor: 'white', zIndex: 1000, padding: '20px', display: 'flex', flexDirection: 'column' }}>
+
+                        {/* Close Button "X" */}
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+                            <h2 style={{ margin: 0, fontSize: '20px' }}>Your Cart</h2>
+                            <button onClick={() => setShowCart(false)} style={{ background: 'none', border: 'none', fontSize: '24px', cursor: 'pointer', color: '#B2AC88' }}>✕</button>
+                        </div>
+
+                        {/* Cart Items List */}
+                        <div style={{ flex: 1, overflowY: 'auto' }}>
+                            {cart.length === 0 ? (
+                                <p style={{ textAlign: 'center', color: '#999', marginTop: '40px' }}>Your cart is empty</p>
+                            ) : (
+                                cart.map(item => (
+                                    <div key={item.id} style={{ display: 'flex', gap: '10px', marginBottom: '15px', paddingBottom: '15px', borderBottom: '1px solid #eee' }}>
+                                        <img src={item.image} alt={item.name} style={{ width: '60px', height: '60px', objectFit: 'cover', borderRadius: '4px' }} />
+                                        <div style={{ flex: 1 }}>
+                                            <h4 style={{ fontSize: '14px', margin: '0 0 5px 0' }}>{item.name}</h4>
+                                            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                                                <button onClick={() => updateQuantity(item.id, item.quantity - 1)} style={{ border: '1px solid #ddd', background: 'none', padding: '2px 8px' }}>-</button>
+                                                <span>{item.quantity}</span>
+                                                <button onClick={() => updateQuantity(item.id, item.quantity + 1)} style={{ border: '1px solid #ddd', background: 'none', padding: '2px 8px' }}>+</button>
+                                                <button onClick={() => removeFromCart(item.id)} style={{ marginLeft: 'auto', background: 'none', border: 'none', color: 'red', cursor: 'pointer' }}>🗑️</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))
+                            )}
+                        </div>
+
+                        {cart.length > 0 && (
+                            <button onClick={sendCartToWhatsApp} style={{ width: '100%', backgroundColor: '#25D366', color: 'white', padding: '15px', borderRadius: '4px', cursor: 'pointer', border: 'none', fontWeight: 'bold', marginTop: '10px' }}>
+                                Order via WhatsApp
+                            </button>
+                        )}
                     </div>
                 </>
             )}
 
-            {/* Main Product Rows */}
             <ProductRow title="New Arrivals" items={newArrivals} />
             <ProductRow title="Best Selling" items={bestSelling} />
             <ProductRow title="Modern Classics" items={modernClassics} />

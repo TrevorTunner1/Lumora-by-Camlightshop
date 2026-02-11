@@ -37,13 +37,14 @@ body {
     padding: 20px 5%;
     z-index: 1000;
     border-bottom: 1px solid #eee;
+    border: 2px solid var(--gold);
 }
 
 .brand-name {
     font-size: 28px;
     font-weight: bold;
     letter-spacing: 6px;
-    color: var(--gold);
+    color: #738a6e;
     text-transform: uppercase;
 }
 
@@ -177,7 +178,7 @@ body {
     position: absolute;
     top: -6px;
     right: -8px;
-    background: var(--gold);
+    background: #738a6e;
     color: #fff;
     border-radius: 50%;
     width: 18px;

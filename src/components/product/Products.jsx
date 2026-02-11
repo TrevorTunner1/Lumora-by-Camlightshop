@@ -177,7 +177,7 @@ const Products = () => {
     };
 
     const ProductRow = ({ title, items }) => (
-        <> <section className={styles.sectionWrapper}>
+        <section className={styles.sectionWrapper}>
             <h2 className={styles.sectionTitle}>{title}</h2>
             <div className={styles.horizontalScroll}>
                 {items.map(product => (
@@ -197,28 +197,6 @@ const Products = () => {
             </div>
 
         </section>
-            <section className={styles.sectionWrapper}>
-                <h2 className={styles.sectionTitle}>{title}</h2>
-                <div className={styles.horizontalScroll}>
-                    {items.map(product => (
-                        <div key={product.id} className={styles.productCard}>
-                            <div className={styles.imageContainer}>
-                                <img src={product.image} alt={product.name} />
-                            </div>
-                            <div className={styles.productInfo}>
-                                <h3>{product.name}</h3>
-                                <span className={styles.productPrice}>₦{product.price}</span>
-                                <button onClick={() => addToCart(product)} className={styles.whatsappBtn}>
-                                    Add to Cart
-                                </button>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-
-            </section>
-
-        </>
 
     );
 

@@ -207,7 +207,7 @@ const Products = () => {
             {showCart && (
                 <>
                     <div onClick={() => setShowCart(false)} style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100vh', backgroundColor: 'rgba(0,0,0,0.5)', zIndex: 999 }} />
-                    <div style={{ position: 'fixed', top: 0, right: 0, width: '100%', maxWidth: '350px', height: '100vh', backgroundColor: 'white', zIndex: 1000, padding: '20px', display: 'flex', flexDirection: 'column' }}>
+                    <div style={{ position: 'fixed', top: 0, right: 0, width: '100%', maxWidth: '350px', minHeight: '100vh', backgroundColor: 'white', zIndex: 1000, padding: '20px', display: 'flex', flexDirection: 'column' }}>
 
                         {/* Close Button "X" */}
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>

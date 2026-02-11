@@ -9,19 +9,19 @@ const HERO_SLIDES = [
         id: 1,
         title: "Lumora Elegance",
         subtitle: "EST. 2026",
-        image: "/public/images/patrick-schneider-mFnbFaCIu1I-unsplash (1).jpg"
+        image: "/images/patrick-schneider-mFnbFaCIu1I-unsplash (1).jpg"   // ← add / at start, remove public
     },
     {
         id: 2,
         title: "Modern Luxe",
         subtitle: "HANDMADE COLLECTION",
-        image: "/public/images/hero_background_image.jpg"
+        image: "/images/hero_background_image.jpg"
     },
     {
         id: 3,
         title: "Bespoke Art",
         subtitle: "CUSTOM DESIGNS",
-        image: "/public/images/waldemar-brandt-QxUszVGKt98-unsplash.jpg"
+        image: "/images/waldemar-brandt-QxUszVGKt98-unsplash.jpg"
     }
 ];
 

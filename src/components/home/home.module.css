@@ -1,246 +1,147 @@
-/* Import Luxury Fonts from Google */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap');
-
-:root {
-    --gold: #B89146;
-    --dark: #1A1A1A;
-    --cream: #FCFBFA;
-    --gray: #757575;
+.home {
+    /* background-color: #EDE8D0; */
 }
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: 'Inter', sans-serif;
-    background-color: #EDE8D0;
-    color: var(--dark);
-    line-height: 1.6;
-}
-
-h1,
-h2,
-h3,
-h4,
-.brand-name {
-    font-family: 'Playfair Display', serif;
-}
-
-
-.container {}
-
-/* Header & Navigation */
-.navbar {
-    position: fixed;
-    top: 0;
+/* 1. The Container: Not full screen, elegant sizing */
+.heroContainer {
+    position: relative;
     width: 100%;
-    background: rgba(255, 255, 255, 0.95);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 5%;
-    z-index: 1000;
-    border-bottom: 1px solid #eee;
+    /* margin: 90px auto 30px; */
+    /* Space for navbar */
+    height: 60vh;
+    /* Perfect height for mobile */
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+
 }
 
-.brand-name {
-    font-size: 28px;
-    font-weight: bold;
-    letter-spacing: 6px;
-    color: var(--gold);
-    text-transform: uppercase;
-}
-
-.brand-name a {
-    text-decoration: none;
-    color: inherit;
-}
-
-.hamburger {
-    display: none;
-    flex-direction: column;
-    background: none;
-    border: none;
-    cursor: pointer;
-    gap: 6px;
-    z-index: 1001;
-}
-
-.hamburger-line {
-    width: 25px;
-    height: 3px;
-    background-color: var(--dark);
-    transition: all 0.3s ease;
-    transform-origin: center;
-}
-
-.hamburger.active .hamburger-line:nth-child(1) {
-    transform: rotate(45deg) translate(8px, 8px);
-}
-
-.hamburger.active .hamburger-line:nth-child(2) {
+/* 2. Slide Transition (Smoother Crossfade) */
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     opacity: 0;
-}
-
-.hamburger.active .hamburger-line:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -7px);
-}
-
-.nav-links {
+    transition: opacity 1.2s ease-in-out;
     display: flex;
-    list-style: none;
-    gap: 0;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: var(--dark);
-    margin-left: 30px;
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    transition: color 0.3s ease;
-}
-
-.hero {
-    height: 80vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-        url('/src/assets/images/hero_background_image.jpg');
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
-    color: white;
 }
 
-.hero h2 {
-    font-size: 60px;
-    font-style: italic;
-    margin-bottom: 20px;
+.slide.active {
+    opacity: 1;
+    z-index: 1;
 }
 
-.hero p {
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    font-size: 14px;
-}
-
-/* Explore Catalog Button */
-.explore-btn {
-    display: inline-block;
-    margin-top: 30px;
-    padding: 15px 40px;
-    background: linear-gradient(135deg, var(--gold), #d9b99b);
-    color: #faf0e6;
-    text-decoration: none;
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    font-weight: 600;
-    border: 2px solid white;
-    border-radius: 50px;
-    transition: all 0.4s ease;
-    box-shadow: 0 4px 15px rgba(184, 145, 70, 0.2);
-    position: relative;
+/* 3. The Image with Subtle Blur and Zoom */
+.imageWrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
     overflow: hidden;
 }
 
-.explore-btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
+.heroImage {
     width: 100%;
     height: 100%;
-    background: rgba(255, 255, 255, 0.1);
-    transition: left 0.4s ease;
+    object-fit: cover;
+    filter: blur(1.5px) brightness(0.7);
+    /* Subtle blur, dark for white text */
+    transition: transform 10s linear;
+    /* Constant slow zoom */
 }
 
-.explore-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(184, 145, 70, 0.4);
-    background: linear-gradient(135deg, #d4a574, var(--gold));
+/* Zoom Effect when slide is active or hovered */
+.active .heroImage {
+    transform: scale(1.15);
 }
 
-.explore-btn:hover::before {
-    left: 100%;
+/* 4. Centered Content */
+.content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #ffffff;
+    /* White text as requested */
+    padding: 20px;
 }
 
-.homeCatalog {
-    padding: 20px 5%;
+.subtitle {
+    font-size: 10px;
+    letter-spacing: 4px;
+    margin-bottom: 10px;
+    opacity: 0.9;
 }
 
+.title {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-style: italic;
+    margin-bottom: 25px;
+    line-height: 1.1;
+}
 
+.exploreBtn {
+    background: linear-gradient(135deg, #E6DCCF, #A3B18A);
+    color: white;
+    border: 1px solid white;
+    padding: 12px 30px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s;
 
-@media (max-width: 768px) {
-    .homeCatalog {
-        margin-inline: 10px;
-    }
+}
 
-    .home {}
+.exploreBtn:hover {
+    background: white;
+    color: #1a1a1a;
+}
 
-    .container {
-        /* max-width: fit-content; */
+/* 5. Dots UI */
+.dots {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    z-index: 3;
+}
 
+.dot {
+    width: 6px;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+}
 
-    }
+.dotActive {
+    width: 20px;
+    /* Pill shape for active */
+    height: 6px;
+    background: white;
+    border-radius: 10px;
+    transition: width 0.3s;
+}
 
-    .hero {
-        height: 50vh;
-        background:
-            url('/src/assets/images/hero_background_image.jpg');
-        background-size: contain;
-        background-repeat: no-repeat;
-    }
-
-    .hero h2 {
-        font-size: 25px;
-    }
-
-    .product-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .hamburger {
-        display: flex;
-    }
-
-    .nav-links {
-        position: fixed;
-        left: 0;
-        top: 70px;
+/* Desktop Scale Up */
+@media (min-width: 1024px) {
+    .heroContainer {
+        height: 80vh;
         width: 100%;
-        height: calc(100vh - 70px);
-        background: rgba(255, 255, 255, 0.98);
-        flex-direction: column;
-        justify-content: flex-start;
-        padding-top: 30px;
-        gap: 20px;
-        transform: translateX(-100%);
-        transition: transform 0.3s ease;
+
     }
 
-    .nav-links.nav-open {
-        transform: translateX(0);
+    .title {
+        font-size: 72px;
     }
 
-    .nav-links a {
-        margin-left: 0;
-        padding: 15px 5%;
-        display: block;
-        font-size: 16px;
-        border-bottom: 1px solid #eee;
-    }
-
-    .explore-btn {
-        padding: 12px 30px;
-        font-size: 12px;
-        margin-top: 20px;
+    .subtitle {
+        font-size: 14px;
     }
 }

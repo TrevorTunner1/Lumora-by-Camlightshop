@@ -1,98 +1,163 @@
-/* Container */
 .container {
-    padding: 24px 0;
-    border-bottom: 1px solid #E5E5E5;
+    padding: 60px 0 20px;
+    background-color: transparent;
+    /* Blends with your #EDE8D0 */
 }
 
 .innerContainer {
-    max-width: 1400px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 0 32px;
+    padding: 0 5%;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.subtitle {
+    display: block;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: #B89146;
+    /* Gold accent */
+    margin-bottom: 8px;
+    font-weight: 600;
 }
 
 .title {
-    font-family: 'Crimson Pro', 'Georgia', serif;
-    font-size: 15px;
-    font-weight: 400;
-    letter-spacing: 0.5px;
-    color: #333;
-    margin-bottom: 20px;
-    text-transform: none;
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 500;
+    color: #1a1a1a;
+    font-style: italic;
 }
 
-.buttonsWrapper {
+/* Filter Wrapper */
+.filterWrapper {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     position: relative;
-    margin-bottom: 20px;
 }
 
-.scrollButton {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    border: 1px solid #d9b99b;
-    background-color: white;
+.scrollArea {
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+    padding: 10px 0;
+}
+
+/* The horizontal list */
+.categoriesList {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    /* Firefox */
+    padding: 5px 20px;
+}
+
+.categoriesList::-webkit-scrollbar {
+    display: none;
+    /* Chrome/Safari */
+}
+
+/* Elegant Chips */
+.categoryChip {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #555;
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 12px 24px;
+    border-radius: 50px;
     cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+}
+
+.categoryChip:hover {
+    transform: translateY(-2px);
+    border-color: #B89146;
+    color: #1a1a1a;
+    box-shadow: 0 5px 15px rgba(184, 145, 70, 0.1);
+}
+
+.categoryChip.active {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    border-color: #1a1a1a;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Navigation Arrows */
+.navButton {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: white;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0;
-    transition: all 0.2s ease;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
-}
-
-.scrollButton:hover {
-    background-color: #F5F5F5;
-    border-color: #D0D0D0;
-}
-
-.categoriesContainer {
-    display: flex;
-    gap: 8px;
-    overflow-x: auto;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    flex: 1;
-    padding: 4px 0;
-}
-
-/* Hide scrollbar for Chrome, Safari and Opera */
-.categoriesContainer::-webkit-scrollbar {
-    display: none;
-}
-
-.categoryButton {
-    font-family: 'Inter', -apple-system, sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    letter-spacing: 0.2px;
-    color: #666;
-    background-color: transparent;
-    border: 1px solid #E0E0E0;
-    border-radius: 24px;
-    padding: 10px 24px;
     cursor: pointer;
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    white-space: nowrap;
+    color: #1a1a1a;
+    transition: all 0.3s;
     flex-shrink: 0;
-    outline: none;
 }
 
-.categoryButton:hover {
-    background-color: #F8F8F8;
-    border-color: #D0D0D0;
+.navButton:hover {
+    background: #1a1a1a;
+    color: white;
+    border-color: #1a1a1a;
 }
 
-.categoryButton.active {
-    font-weight: 500;
-    color: #FFFFFF;
-    background-color: #1A1A1A;
-    border: none;
+.navButton svg {
+    width: 18px;
+    height: 18px;
 }
 
-.categoryButton.active:hover {
-    background-color: #1A1A1A;
-    border: none;
+/* Gradient Fade Masks (The "Luxury" Secret) */
+.fadeLeft,
+.fadeRight {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 40px;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.fadeLeft {
+    left: 0;
+    background: linear-gradient(to right, #EDE8D0, transparent);
+}
+
+.fadeRight {
+    right: 0;
+    background: linear-gradient(to left, #EDE8D0, transparent);
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .title {
+        font-size: 24px;
+    }
+
+    .navButton {
+        display: none;
+        /* Let users swipe naturally on mobile */
+    }
+
+    .categoryChip {
+        padding: 10px 20px;
+        font-size: 11px;
+    }
 }

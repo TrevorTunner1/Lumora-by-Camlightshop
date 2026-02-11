@@ -14,7 +14,7 @@ const Catalog = () => {
     };
 
     return (
-        <section className={styles.catalog} >
+        <section id="catalog" className={styles.catalog} >
             <Navbar />
             <div className={styles.container}>
                 <form action="" className={styles.searchForm} onSubmit={(e) => e.preventDefault()}>

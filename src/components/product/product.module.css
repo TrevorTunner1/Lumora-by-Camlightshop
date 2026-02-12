@@ -100,6 +100,87 @@
     width: fit-content;
 }
 
+/* Toast Container - Centered at top */
+.toastContainer {
+    position: fixed;
+    top: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    pointer-events: none;
+}
+
+.toast {
+    background-color: #F5F5DC;
+    /* Beige */
+    color: #4a4a4a;
+    padding: 12px 20px;
+    border-radius: 50px;
+    border: 2px solid #B2AC88;
+    /* Sage Green */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    font-size: 14px;
+    animation: slideIn 0.4s ease-out;
+}
+
+.toastIcon {
+    background-color: #B2AC88;
+    /* Sage Green */
+    color: white;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Horizontal Scroll Fixes */
+.horizontalScroll {
+    display: flex;
+    overflow-x: auto;
+    gap: 15px;
+    padding-bottom: 10px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.horizontalScroll::-webkit-scrollbar {
+    display: none;
+}
+
+.productCard {
+    flex: 0 0 280px;
+}
+
+/* Mobile Image Size Fix */
+.imageContainer {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background-color: #F5F5DC;
+    border-radius: 4px;
+}
+
+/* ... keep your other styles (imageContainer, whatsappBtn, etc.) */
+
 /* Mobile Adjustments */
 @media (max-width: 768px) {
     .horizontalScroll {

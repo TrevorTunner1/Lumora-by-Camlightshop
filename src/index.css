@@ -28,4 +28,7 @@ button {
   background: none;
 }
 
-body {}
+:root {
+  color-scheme: light only;
+  /* or just "light" */
+}

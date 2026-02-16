@@ -5,6 +5,9 @@ import Categories from '../categories/Categories';
 import Footer from '../Footer/Footer';
 import Products from '../product/Products';
 import { Link } from 'react-router-dom';
+import { LampFloor } from 'lucide-react';
+import { Truck } from 'lucide-react';
+import { Recycle } from 'lucide-react';
 const HERO_SLIDES = [
     {
         id: 1,
@@ -87,17 +90,17 @@ const Home = () => {
             <section className={styles.features}>
                 <div className={styles.featureGrid}>
                     <div className={styles.featureItem}>
-                        <span className={styles.icon}>✦</span>
+                        <LampFloor color="#738a6e" size={40} />
                         <h4>Handcrafted in Nigeria</h4>
                         <p>Every piece is thoughtfully designed and assembled with premium materials.</p>
                     </div>
                     <div className={styles.featureItem}>
-                        <span className={styles.icon}>🚚</span>
+                        <span className={styles.icon}><Truck color="#738a6e" size={40} /></span>
                         <h4>Fast Delivery to PH & Beyond</h4>
                         <p>Reliable shipping across Rivers State and nationwide.</p>
                     </div>
                     <div className={styles.featureItem}>
-                        <span className={styles.icon}>♻️</span>
+                        <span className={styles.icon}><Recycle color="#738a6e" size={40} /></span>
                         <h4>Sustainable Luxury</h4>
                         <p>Eco-conscious materials without compromising elegance.</p>
                     </div>

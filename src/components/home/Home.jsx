@@ -4,7 +4,7 @@ import Navbar from '../Navbar/Navbar';
 import Categories from '../categories/Categories';
 import Footer from '../Footer/Footer';
 import Products from '../product/Products';
-
+import { Link } from 'react-router-dom';
 const HERO_SLIDES = [
     {
         id: 1,
@@ -57,7 +57,7 @@ const Home = () => {
                         <div className={styles.content}>
                             <p className={styles.subtitle}>{slide.subtitle}</p>
                             <h2 className={styles.title}>{slide.title}</h2>
-                            <button className={styles.exploreBtn}>Explore Catalog</button>
+                            <Link to="/catalog" className={styles.exploreLink}>Explore Catalog</Link>
                         </div>
                     </div>
                 ))}
@@ -72,18 +72,33 @@ const Home = () => {
 
             <header className={styles.header}>
                 <span className={styles.subtitle}>Curated Selection</span>
-                <h3 className={styles.headerTitle}>Lumora by camshoplight</h3>
+                <h3 className={styles.headerTitle}>Lumora by camlightshop</h3>
             </header>
 
             <section id="catalog" className={styles.homeCatalog}>
-                {/* <Categories
-                activeCategory={activeCategory}
-                setActiveCategory={setActiveCategory}
-                searchTerm={searchTerm}
-                /> */}
-                <Products />
+                <Products view="home" />
+
                 <div className={styles.viewAll}>
-                    <a href="#" className={styles.view}>VIEW ALL PRODUCT</a>
+                    <a href="/catalog" className={styles.view}>VIEW ALL PRODUCT</a>
+                </div>
+            </section>
+            <section className={styles.features}>
+                <div className={styles.featureGrid}>
+                    <div className={styles.featureItem}>
+                        <span className={styles.icon}>✦</span>
+                        <h4>Handcrafted in Nigeria</h4>
+                        <p>Every piece is thoughtfully designed and assembled with premium materials.</p>
+                    </div>
+                    <div className={styles.featureItem}>
+                        <span className={styles.icon}>🚚</span>
+                        <h4>Fast Delivery to PH & Beyond</h4>
+                        <p>Reliable shipping across Rivers State and nationwide.</p>
+                    </div>
+                    <div className={styles.featureItem}>
+                        <span className={styles.icon}>♻️</span>
+                        <h4>Sustainable Luxury</h4>
+                        <p>Eco-conscious materials without compromising elegance.</p>
+                    </div>
                 </div>
             </section>
             <Footer />

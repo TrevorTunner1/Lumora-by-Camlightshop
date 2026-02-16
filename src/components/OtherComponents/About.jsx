@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Footer from '../Footer/Footer';
 import styles from './About.module.css';
+import Navbar from '../Navbar/Navbar';
 
 const About = () => {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -12,29 +13,10 @@ const About = () => {
 
     return (
         <>
-            <nav className={styles.navbar}>
-                <div className={styles['brand-name']}>
-                    <Link to="/">LAMOURA</Link>
-                </div>
-                <button
-                    className={styles['hamburger']}
-                    onClick={toggleMenu}
-                    aria-label="Toggle menu"
-                >
-                    <span className={`${styles['hamburger-line']} ${menuOpen ? styles.active : ''}`}></span>
-                    <span className={`${styles['hamburger-line']} ${menuOpen ? styles.active : ''}`}></span>
-                    <span className={`${styles['hamburger-line']} ${menuOpen ? styles.active : ''}`}></span>
-                </button>
-                <ul className={`${styles['nav-links']} ${menuOpen ? styles['nav-open'] : ''}`}>
-                    <Link to="/" onClick={() => setMenuOpen(false)}>Home</Link>
-                    <a href="/#catalog" onClick={() => setMenuOpen(false)}>Collection</a>
-                    <Link to="/about" onClick={() => setMenuOpen(false)}>Bespoke</Link>
-                    <a href="/#contact" onClick={() => setMenuOpen(false)}>Contact</a>
-                </ul>
-            </nav>
+            <Navbar menuOpen={menuOpen} toggleMenu={toggleMenu} />
             <section className={styles.about} id="about">
                 <h1 className={styles.title}>About LAMOURA</h1>
-                <p className={styles.description}>Essentials is a carefully curated collection of timeless products designed to enhance everyday living. We believe that good design is simple, functional, and beautiful.</p>
+                <p className={styles.description}>Lamoura is a carefully curated collection of timeless products designed to enhance everyday living. We believe that good design is simple, functional, and beautiful.</p>
                 <ul>
                     <li>
                         <h2 className={styles.subtitle}>Our Mission</h2>

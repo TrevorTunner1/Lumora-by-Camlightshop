@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/cart-context';
 import styles from './navbar.module.css';
+import { useSearch } from '../context/search-context';
 
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
     const [isSearchOpen, setIsSearchOpen] = useState(false);
     const { cartCount, setShowCart } = useCart();
+    const { searchTerm, setSearchTerm } = useSearch();
 
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
@@ -48,6 +50,8 @@ const Navbar = () => {
                         type="text"
                         placeholder="Search our collection..."
                         className={styles['search-input']}
+                        value={searchTerm} // Bind value
+                        onChange={(e) => setSearchTerm(e.target.value)} // Update global state
                         autoFocus={isSearchOpen}
                     />
                 </div>

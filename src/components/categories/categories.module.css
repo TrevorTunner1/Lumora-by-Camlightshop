@@ -1,163 +1,172 @@
 .container {
-    padding: 60px 0 20px;
-    background-color: transparent;
-    /* Blends with your #EDE8D0 */
+    padding: 80px 0 40px;
+    background: transparent;
 }
 
 .innerContainer {
-    max-width: 1200px;
+    max-width: 1320px;
     margin: 0 auto;
     padding: 0 5%;
 }
 
 .header {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 48px;
 }
 
 .subtitle {
     display: block;
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 4px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3px;
     color: #B89146;
-    /* Gold accent */
-    margin-bottom: 8px;
-    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 10px;
 }
 
 .title {
     font-family: 'Playfair Display', serif;
-    font-size: 32px;
+    font-size: 38px;
     font-weight: 500;
-    color: #1a1a1a;
-    font-style: italic;
+    color: #111;
+    margin: 0;
+    line-height: 1.1;
 }
 
-/* Filter Wrapper */
+/* ── Filter ─────────────────────────────────────── */
 .filterWrapper {
+    position: relative;
     display: flex;
     align-items: center;
-    gap: 10px;
-    position: relative;
+    gap: 12px;
+    margin: 0 auto;
+    max-width: 100%;
 }
 
 .scrollArea {
     position: relative;
     flex: 1;
     overflow: hidden;
-    padding: 10px 0;
 }
 
-/* The horizontal list */
 .categoriesList {
     display: flex;
-    gap: 12px;
+    gap: 14px;
     overflow-x: auto;
     scroll-behavior: smooth;
     scrollbar-width: none;
-    /* Firefox */
-    padding: 5px 20px;
+    padding: 12px 0;
+    -webkit-overflow-scrolling: touch;
+    /* smooth iOS scrolling */
 }
 
 .categoriesList::-webkit-scrollbar {
     display: none;
-    /* Chrome/Safari */
 }
 
-/* Elegant Chips */
 .categoryChip {
-    font-family: 'Inter', sans-serif;
-    font-size: 12px;
-    font-weight: 400;
-    letter-spacing: 1px;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.8px;
     text-transform: uppercase;
-    color: #555;
-    background: white;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    padding: 12px 24px;
-    border-radius: 50px;
+    color: #444;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    padding: 10px 26px;
+    border-radius: 999px;
     cursor: pointer;
     white-space: nowrap;
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+    transition: all 0.35s ease;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
 }
 
 .categoryChip:hover {
-    transform: translateY(-2px);
+    transform: translateY(-1px);
     border-color: #B89146;
-    color: #1a1a1a;
-    box-shadow: 0 5px 15px rgba(184, 145, 70, 0.1);
+    color: #111;
+    box-shadow: 0 6px 16px rgba(184, 145, 70, 0.12);
 }
 
 .categoryChip.active {
-    background-color: #1a1a1a;
-    color: #ffffff;
-    border-color: #1a1a1a;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    background: #111;
+    color: white;
+    border-color: #111;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
 }
 
-/* Navigation Arrows */
+/* Arrows - more subtle & elegant */
 .navButton {
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
-    border: 1px solid rgba(0, 0, 0, 0.1);
     background: white;
+    border: 1px solid #ddd;
+    color: #333;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    color: #1a1a1a;
-    transition: all 0.3s;
+    transition: all 0.3s ease;
     flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .navButton:hover {
-    background: #1a1a1a;
+    background: #111;
     color: white;
-    border-color: #1a1a1a;
+    border-color: #111;
+    transform: translateY(-1px);
 }
 
 .navButton svg {
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
 }
 
-/* Gradient Fade Masks (The "Luxury" Secret) */
+/* Fade gradients - softer & matching background */
 .fadeLeft,
 .fadeRight {
     position: absolute;
     top: 0;
     bottom: 0;
-    width: 40px;
+    width: 60px;
     pointer-events: none;
-    z-index: 2;
+    z-index: 1;
 }
 
 .fadeLeft {
     left: 0;
-    background: linear-gradient(to right, #EDE8D0, transparent);
+    background: linear-gradient(to right, #EDE8D0, transparent 70%);
 }
 
 .fadeRight {
     right: 0;
-    background: linear-gradient(to left, #EDE8D0, transparent);
+    background: linear-gradient(to left, #EDE8D0, transparent 70%);
 }
 
-/* Mobile Adjustments */
+/* Mobile */
 @media (max-width: 768px) {
+    .container {
+        padding: 60px 0 30px;
+    }
+
     .title {
-        font-size: 24px;
+        font-size: 28px;
     }
 
     .navButton {
         display: none;
-        /* Let users swipe naturally on mobile */
+        /* trust swipe on mobile */
     }
 
     .categoryChip {
-        padding: 10px 20px;
-        font-size: 11px;
+        font-size: 12px;
+        padding: 9px 20px;
+    }
+
+    .fadeLeft,
+    .fadeRight {
+        width: 40px;
     }
 }

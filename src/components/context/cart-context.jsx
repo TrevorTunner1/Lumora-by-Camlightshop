@@ -87,7 +87,7 @@ export const CartProvider = ({ children }) => {
             return;
         }
 
-        const waNumber = "07059498554"; // ← CHANGE THIS to client's real WhatsApp number
+        const waNumber = "09137671904"; // ← CHANGE THIS to client's real WhatsApp number
         const message = getWhatsAppMessage();
         const url = `https://wa.me/${waNumber}?text=${message}`;
 

@@ -57,7 +57,9 @@ const Home = () => {
                         <div className={styles.content}>
                             <p className={styles.subtitle}>{slide.subtitle}</p>
                             <h2 className={styles.title}>{slide.title}</h2>
-                            <Link to="/catalog" className={styles.exploreLink}>Explore Catalog</Link>
+                            <Link to="/catalog" className={styles.primaryBtn}>
+                                Explore Collection
+                            </Link>
                         </div>
                     </div>
                 ))}

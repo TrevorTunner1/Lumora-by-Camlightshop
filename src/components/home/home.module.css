@@ -189,6 +189,34 @@
     color: #B89146;
 }
 
+.ctaGroup {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.primaryBtn,
+.secondaryBtn {
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-decoration: none;
+    transition: all 0.4s ease;
+}
+
+.primaryBtn {
+    background: #B89146;
+    /* gold accent */
+    color: white;
+    border: 1px solid #B89146;
+}
+
+.primaryBtn:hover {
+    background: transparent;
+    color: #B89146;
+}
 
 
 /* Desktop Scale Up */

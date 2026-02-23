@@ -1,0 +1,141 @@
+.table th {
+    background: #f8f8f8;
+    padding: 15px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #444;
+}
+
+.table td {
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+}
+
+.productCell {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.imgPlaceholder {
+    width: 40px;
+    height: 40px;
+    background: #e0e0e0;
+    border-radius: 6px;
+}
+
+.pName {
+    font-weight: 500;
+}
+
+.pId {
+    font-size: 11px;
+    color: #999;
+}
+
+.pPrice {
+    font-weight: 600;
+}
+
+.stockPill {
+    background: #f0fff4;
+    color: #2f855a;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+.actions {
+    display: flex;
+    gap: 8px;
+}
+
+.editBtn {
+    background: black;
+    color: white;
+    border: none;
+    padding: 5px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.deleteBtn {
+    background: #e53e3e;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.headerRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    /* 👈 wrap on small screens */
+    gap: 12px;
+}
+
+.title {
+    font-size: 24px;
+    /* 👈 slightly smaller on mobile */
+    font-weight: 400;
+    margin: 0;
+}
+
+.subtitle {
+    color: #888;
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+.addButton {
+    background: black;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    /* 👈 prevent button text wrapping */
+}
+
+.tableContainer {
+    border: 1px solid #eee;
+    border-radius: 12px;
+    overflow-x: auto;
+    /* 👈 this is the key fix for horizontal scroll */
+    -webkit-overflow-scrolling: touch;
+    /* smooth scroll on iOS */
+}
+
+.table {
+    width: 100%;
+    min-width: 500px;
+    /* 👈 forces scroll before table squishes */
+    border-collapse: collapse;
+    text-align: left;
+}
+
+/* Mobile tweaks */
+@media (max-width: 480px) {
+    .title {
+        font-size: 20px;
+    }
+
+    .table th,
+    .table td {
+        padding: 12px 14px;
+        font-size: 13px;
+    }
+
+    .addButton {
+        width: 100%;
+        /* 👈 full width button on very small screens */
+    }
+}

@@ -19,7 +19,7 @@ const CategoryFilter = ({
     };
 
     const categories = [
-        'All', 'Chandeliers', 'Wall Lights', 'Pendants', 'Floor Lamps', 'Table Lamps',
+        'All', 'Chandeliers', 'Home', 'Pendants', 'Floor Lamps', 'Table Lamps',
         'Desk Lamps', 'Ceiling Lights', 'Sconces', 'Track Lighting',
         'Minimalist', 'Vintage', 'Modern', 'Contemporary',
         'Crystal Fixtures', 'Brass Fixtures', 'Smart Lighting'

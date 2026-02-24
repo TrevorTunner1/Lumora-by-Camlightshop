@@ -58,8 +58,18 @@
     transition: 0.2s;
 }
 
+.brand-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    letter-spacing: 4px;
+    color: #738a6e;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
 .nav button.active {
-    background: black;
+    background: #738a6e;
     color: white;
 }
 

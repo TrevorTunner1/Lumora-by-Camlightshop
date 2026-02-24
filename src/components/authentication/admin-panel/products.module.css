@@ -87,6 +87,13 @@
     margin: 0;
 }
 
+.imgThumb {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
 .subtitle {
     color: #888;
     margin-top: 5px;
@@ -94,7 +101,7 @@
 }
 
 .addButton {
-    background: black;
+    background: #738a6e;
     color: white;
     border: none;
     padding: 10px 20px;

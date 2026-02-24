@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import styles from './AdminPanel.module.css';
 import Sidebar from './Sidebar';
 import Dashboard from './Dashboard';
-import Products from './Products';
 import { signOut } from 'firebase/auth';
 import { db, auth } from '../../../firebase/config';
+import AdminProducts from './AdminProducts';
 
 function AdminPanel() {
     const [activeTab, setActiveTab] = useState('Dashboard');
@@ -31,7 +31,7 @@ function AdminPanel() {
                         Admin Panel
                     </div>
                     <div className={styles.headerLinks}>
-                        <span>Settings</span>
+
                         <button
                             type="button"
                             onClick={handleLogout}
@@ -43,7 +43,7 @@ function AdminPanel() {
                 </header>
 
                 <section className={styles.contentBody}>
-                    {activeTab === 'Dashboard' ? <Dashboard /> : <Products />}
+                    {activeTab === 'Dashboard' ? <Dashboard /> : <AdminProducts />}
                 </section>
             </main>
         </div>

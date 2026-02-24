@@ -1,14 +1,15 @@
 import React from 'react';
 import styles from './Sidebar.module.css';
+import { Link } from 'react-router-dom';
 
 const Sidebar = ({ activeTab, setActiveTab }) => {
     return (
         <aside className={styles.sidebar}>
             <div className={styles.brand}>
-                <div className={styles.logoSquare}>E</div>
                 <div>
-                    <h1 className={styles.brandName}>Essentials</h1>
-                    <p className={styles.brandSub}>Ecommerce</p>
+                    <Link to="/" className={styles['brand-name']}>
+                        LAMOURA
+                    </Link>
                 </div>
             </div>
 

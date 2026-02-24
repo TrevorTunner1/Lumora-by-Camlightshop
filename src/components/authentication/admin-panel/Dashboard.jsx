@@ -1,12 +1,27 @@
-import React from 'react';
+import React, { useMemo } from 'react';
+import { useProducts } from './admin-products/UseProducts';
 import styles from './Dashboard.module.css';
 
 const Dashboard = () => {
-    const stats = [
-        { label: 'Total Products', value: '6', icon: '📦', color: '#f0f7ff' },
-        { label: 'Inventory Value', value: '$276.00', icon: '💰', color: '#f0fff4' },
-        { label: 'Categories', value: '3', icon: '🏷️', color: '#faf5ff' },
-    ];
+    const { products, loading } = useProducts();
+
+    const stats = useMemo(() => {
+        const totalProducts = products.length;
+
+        const inventoryValue = products.reduce((sum, p) => {
+            // Strip commas and symbols, parse as float
+            const cleaned = String(p.price).replace(/[^0-9.]/g, '');
+            return sum + (parseFloat(cleaned) || 0);
+        }, 0);
+
+        const categories = new Set(products.map(p => p.category)).size;
+
+        return [
+            { label: 'Total Products', value: loading ? '…' : totalProducts, icon: '📦', color: '#f0f7ff' },
+            { label: 'Inventory Value', value: loading ? '…' : `₦${inventoryValue.toLocaleString()}`, icon: '💰', color: '#f0fff4' },
+            { label: 'Categories', value: loading ? '…' : categories, icon: '🏷️', color: '#faf5ff' },
+        ];
+    }, [products, loading]);
 
     return (
         <div>

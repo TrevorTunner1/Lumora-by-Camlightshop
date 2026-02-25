@@ -1,7 +1,7 @@
 // src/admin/Products.jsx
 import React, { useState } from "react";
 import { useProducts } from "./admin-products/UseProducts";
-import styles from "./Products.module.css";
+import styles from "./products.module.css";
 import AddProductModal from "./AddProductModal";
 
 const AdminProducts = () => {

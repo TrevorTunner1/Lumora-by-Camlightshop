@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './AdminPanel.module.css';
-import Sidebar from './Sidebar';
+import Sidebar from './sidebar';
 import Dashboard from './Dashboard';
 import { signOut } from 'firebase/auth';
 import { db, auth } from '../../../firebase/config';

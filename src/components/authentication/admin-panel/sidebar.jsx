@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Sidebar.module.css';
+import styles from './sidebar.module.css';
 import { Link } from 'react-router-dom';
 
 const Sidebar = ({ activeTab, setActiveTab }) => {

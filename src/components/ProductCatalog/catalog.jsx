@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Categories from '../categories/Categories'
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
-import Products from "../product/Products";
 import styles from "./catalog.module.css";
 
 const Catalog = () => {

@@ -112,67 +112,70 @@ const Login = () => {
     };
 
     return (
-        <section className={styles.login}>
+        <>
             <Navbar />
-            <div className={styles.container}>
-                <form className={styles.form} onSubmit={submitHandler}>
-                    <div className={styles.inputGroup}>
-                        <label htmlFor="email">Email</label>
-                        <input
-                            type="email"
-                            id="email"
-                            placeholder="you@example.com"
-                            value={emailState.value}
-                            onChange={emailChangeHandler}
-                            onBlur={validateEmailHandler}
-                            className={!emailIsValid && emailState.isValid !== null ? styles.invalid : ''}
-                        />
-                    </div>
+            <section className={styles.login}>
 
-                    <div className={styles.inputGroup}>
-                        <label htmlFor="password">Password</label>
-                        <input
-                            type="password"
-                            id="password"
-                            placeholder="........"
-                            value={passwordState.value}
-                            onChange={passwordChangeHandler}
-                            onBlur={validatePasswordHandler}
-                            className={!passwordIsValid && passwordState.isValid !== null ? styles.invalid : ''}
-                        />
-                    </div>
-
-                    <div className={styles.cta}>
-                        <div className={styles.checkboxGroup}>
-                            <input type="checkbox" id="remember-me" />
-                            <label htmlFor="remember-me">Remember me</label>
+                <div className={styles.container}>
+                    <form className={styles.form} onSubmit={submitHandler}>
+                        <div className={styles.inputGroup}>
+                            <label htmlFor="email">Email</label>
+                            <input
+                                type="email"
+                                id="email"
+                                placeholder="you@example.com"
+                                value={emailState.value}
+                                onChange={emailChangeHandler}
+                                onBlur={validateEmailHandler}
+                                className={!emailIsValid && emailState.isValid !== null ? styles.invalid : ''}
+                            />
                         </div>
-                        <a href="#" className={styles.forgotPass}>
-                            Forgot password?
-                        </a>
-                    </div>
 
-                    {error && <p className="text-red-600 text-sm mt-2">{error}</p>}
+                        <div className={styles.inputGroup}>
+                            <label htmlFor="password">Password</label>
+                            <input
+                                type="password"
+                                id="password"
+                                placeholder="........"
+                                value={passwordState.value}
+                                onChange={passwordChangeHandler}
+                                onBlur={validatePasswordHandler}
+                                className={!passwordIsValid && passwordState.isValid !== null ? styles.invalid : ''}
+                            />
+                        </div>
 
-                    <button
-                        type="submit"
-                        disabled={loading || !formIsValid}
-                        className={`${styles.signInBtn} ${loading || !formIsValid ? styles.disabled : ''}`}
-                    >
-                        {loading ? 'Signing in...' : 'Sign In'}
-                    </button>
+                        <div className={styles.cta}>
+                            <div className={styles.checkboxGroup}>
+                                <input type="checkbox" id="remember-me" />
+                                <label htmlFor="remember-me">Remember me</label>
+                            </div>
+                            <a href="#" className={styles.forgotPass}>
+                                Forgot password?
+                            </a>
+                        </div>
 
-                    <div className={styles.divider}>
-                        <span>or continue with</span>
-                    </div>
+                        {error && <p className="text-red-600 text-sm mt-2">{error}</p>}
 
-                    <div className={styles.socialButtons}>
-                        <button type="button" className={styles.socialBtn}>Google</button>
-                        <button type="button" className={styles.socialBtn}>GitHub</button>
-                    </div>
-                </form>
-            </div>
-        </section>
+                        <button
+                            type="submit"
+                            disabled={loading || !formIsValid}
+                            className={`${styles.signInBtn} ${loading || !formIsValid ? styles.disabled : ''}`}
+                        >
+                            {loading ? 'Signing in...' : 'Sign In'}
+                        </button>
+
+                        <div className={styles.divider}>
+                            <span>or continue with</span>
+                        </div>
+
+                        <div className={styles.socialButtons}>
+                            <button type="button" className={styles.socialBtn}>Google</button>
+                            <button type="button" className={styles.socialBtn}>GitHub</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </>
     );
 };
 

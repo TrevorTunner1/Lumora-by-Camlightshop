@@ -4,6 +4,7 @@ import Sidebar from './sidebar';
 import Dashboard from './Dashboard';
 import { signOut } from 'firebase/auth';
 import { db, auth } from '../../../firebase/config';
+import { Link } from 'react-router-dom';
 import AdminProducts from './AdminProducts';
 
 function AdminPanel() {
@@ -31,7 +32,9 @@ function AdminPanel() {
                         Admin Panel
                     </div>
                     <div className={styles.headerLinks}>
-
+                        <Link to="/" className={styles['brand-name']}>
+                            Go Home
+                        </Link>
                         <button
                             type="button"
                             onClick={handleLogout}

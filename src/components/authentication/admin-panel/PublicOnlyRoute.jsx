@@ -18,9 +18,9 @@ export default function PublicOnlyRoute() {
             try {
                 const tokenResult = await getIdTokenResult(user, true);
                 if (tokenResult.claims?.admin === true) {
-                    navigate('/admin', { replace: true }); // 👈 already admin → skip login
+                    navigate('/admin', { replace: true });
                 } else {
-                    setStatus('ok'); // logged in but not admin → show login
+                    setStatus('ok');
                 }
             } catch {
                 setStatus('ok');

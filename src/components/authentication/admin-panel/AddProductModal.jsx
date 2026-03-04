@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import styles from './AddProductModal.module.css';
 import { useProducts } from './admin-products/UseProducts';
 
-const EMPTY = { name: '', price: '', category: 'home' };
+const EMPTY = { name: '', price: '', category: 'home', description: '' };
 
 const AddProductModal = ({ isOpen, onClose, product }) => {
     const { addProduct, updateProduct } = useProducts();
@@ -18,7 +18,7 @@ const AddProductModal = ({ isOpen, onClose, product }) => {
     // If editing, pre-fill the form
     useEffect(() => {
         if (product) {
-            setForm({ name: product.name, price: product.price, category: product.category });
+            setForm({ name: product.name, price: product.price, category: product.category, description: product.description || '' });
             setPreview(product.imageUrl || '');
         } else {
             setForm(EMPTY);
@@ -135,6 +135,16 @@ const AddProductModal = ({ isOpen, onClose, product }) => {
                                 <div style={{ width: `${progress}%`, background: '#333', height: '100%', borderRadius: '99px', transition: 'width 0.3s' }} />
                             </div>
                         )}
+                    </div>
+                    <div className={styles.formGroup}>
+                        <label>Description</label>
+                        <textarea
+                            placeholder="Describe the product..."
+                            value={form.description}
+                            rows={4}
+                            onChange={(e) => setForm({ ...form, description: e.target.value })}
+                            style={{ width: '100%', padding: '8px', borderRadius: '6px', border: '1px solid #ddd', resize: 'vertical' }}
+                        />
                     </div>
 
                     {error && <p style={{ color: 'red', fontSize: '0.85rem', margin: 0 }}>{error}</p>}

@@ -76,6 +76,7 @@ export const useProducts = () => {
             name: productData.name,
             category: productData.category,
             price: productData.price,
+            description: productData.description || '',  // ← add this
             imageUrl,
             imagePath,
             createdAt: serverTimestamp(),
@@ -97,6 +98,7 @@ export const useProducts = () => {
             name: productData.name,
             category: productData.category,
             price: productData.price,
+            description: productData.description || '',  // ← add this
             imageUrl,
             imagePath,
         });

@@ -1,30 +1,45 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/cart-context';
 import styles from './navbar.module.css';
 import { useSearch } from '../context/search-context';
+import { onAuthStateChanged, getIdTokenResult } from 'firebase/auth';
+import { auth } from '../../firebase/config';
 
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
     const [isSearchOpen, setIsSearchOpen] = useState(false);
+    const [isAdmin, setIsAdmin] = useState(false);
     const { cartCount, setShowCart } = useCart();
     const { searchTerm, setSearchTerm } = useSearch();
     const navigate = useNavigate();
 
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                const tokenResult = await getIdTokenResult(user, true);
+                setIsAdmin(tokenResult.claims?.admin === true);
+            } else {
+                setIsAdmin(false);
+            }
+        });
+
+        return () => unsubscribe();
+    }, []);
+
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
-        if (isSearchOpen) setIsSearchOpen(false); // Close search if menu opens
+        if (isSearchOpen) setIsSearchOpen(false);
     };
 
     const toggleSearch = () => {
         setIsSearchOpen(!isSearchOpen);
-        if (menuOpen) setMenuOpen(false); // Close menu if search opens
+        if (menuOpen) setMenuOpen(false);
     };
 
     const handleSearch = (e) => {
         const value = e.target.value;
         setSearchTerm(value);
-        // If user is typing and not already on catalog, redirect there
         if (value.trim()) {
             navigate('/catalog');
         }
@@ -32,7 +47,7 @@ const Navbar = () => {
 
     return (
         <nav className={styles.navbar}>
-            {/* 1. Brand Logo - Hidden on mobile when search is expanded */}
+            {/* 1. Brand Logo */}
             <Link to="/" className={`${styles['brand-name']} ${isSearchOpen ? styles.hideBrand : ''}`}>
                 LAMOURA
             </Link>
@@ -43,6 +58,11 @@ const Navbar = () => {
                 <li><a href="/catalog" onClick={() => setMenuOpen(false)}>Collection</a></li>
                 <li><Link to="/about" onClick={() => setMenuOpen(false)}>Bespoke</Link></li>
                 <li><a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a></li>
+                {isAdmin && (
+                    <li>
+                        <Link to="/admin" onClick={() => setMenuOpen(false)}>Admin</Link>
+                    </li>
+                )}
             </ul>
 
             {/* 3. Actions */}

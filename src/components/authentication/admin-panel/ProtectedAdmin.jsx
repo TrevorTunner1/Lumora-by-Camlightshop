@@ -41,7 +41,7 @@ export default function ProtectedAdmin() { // 👈 remove { children } prop
     }
 
     if (status === 'allowed') {
-        return <Outlet />; // 👈 this is the key fix
+        return <Outlet />;
     }
 
     return null;

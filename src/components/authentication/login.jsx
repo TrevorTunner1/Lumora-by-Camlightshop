@@ -70,11 +70,11 @@ const Login = () => {
 
     const navigate = useNavigate();
 
+
     const submitHandler = async (e) => {
         e.preventDefault();
         setError('');
 
-        // Optional: force validation on submit
         if (!formIsValid) {
             emailDispatch({ type: 'INPUT_BLUR' });
             passwordDispatch({ type: 'INPUT_BLUR' });
@@ -85,14 +85,25 @@ const Login = () => {
         setLoading(true);
 
         try {
-            await signInWithEmailAndPassword(
-                auth,                    // ← the auth instance
-                emailState.value.trim(), // ← use the value from reducer
+            const userCredential = await signInWithEmailAndPassword(
+                auth,
+                emailState.value.trim(),
                 passwordState.value
             );
-            // If success → onAuthStateChanged listener should redirect automatically
-            // You can also use useNavigate() here if you prefer
-            navigate('/admin', { replace: true });
+
+            const user = userCredential.user;
+
+            // Force refresh + small safety delay (helps in rare propagation cases)
+            await user.getIdToken(true);
+            await new Promise(resolve => setTimeout(resolve, 800)); // 0.8s wait
+
+            const idTokenResult = await user.getIdTokenResult();
+
+            if (idTokenResult.claims?.admin === true) {
+                navigate('/admin', { replace: true });
+            } else {
+                navigate('/', { replace: true });
+            }
         } catch (err) {
             console.error(err);
             let message = 'Login failed. Please try again.';

@@ -128,4 +128,4 @@ For questions or issues, please contact the project owner.
 
 ---
 
-**Live Demo:** [Lumora by Camlightshop](https://lumora-by-camlightshop.vercel.app)
+**Live Demo:** [Lumora by Camlightshop](https://lumora-by-camlightshop-jpli.vercel.app/)

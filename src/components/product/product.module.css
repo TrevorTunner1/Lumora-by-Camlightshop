@@ -38,28 +38,47 @@
 /* Product Cards */
 .productCard {
     flex: 0 0 280px;
-    /* Desktop width */
+    /* width fixed – good */
+    display: flex;
+    /* NEW */
+    flex-direction: column;
+    /* NEW – important! */
     background: #fff;
+    border-radius: 8px;
+    /* optional – looks nicer */
+    overflow: hidden;
+    /* NEW – prevents any overflow weirdness */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    /* optional polish */
 }
 
 .imageContainer {
     width: 100%;
     aspect-ratio: 1 / 1;
+    /* keeps it square */
     overflow: hidden;
     background-color: #F5F5DC;
-    /* Beige Background */
-    border-radius: 4px;
+    border-radius: 4px 4px 0 0;
+    /* rounded only on top */
+    flex-shrink: 0;
+    /* ← prevents squishing */
 }
 
 .imageContainer img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.8s;
+    object-position: center;
+    /* ← add this (usually default, but explicit helps) */
 }
 
 .productInfo {
-    padding: 12px 0;
+    padding: 12px 12px 16px;
+    flex-grow: 1;
+    /* NEW – pushes button down */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .productInfo h3 {
@@ -77,6 +96,7 @@
 }
 
 .whatsappBtn {
+    margin-top: auto;
     background-color: #4a4a4a;
     color: white;
     padding: 10px;
@@ -468,6 +488,19 @@
 
 /* Mobile Adjustments */
 @media (max-width: 768px) {
+    .productCard {
+        flex: 0 0 180px;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+    .imageContainer {
+        aspect-ratio: 1 / 1;
+        width: 100%;
+        flex-shrink: 0;
+    }
+
     .horizontalScroll {
         margin: 0;
     }

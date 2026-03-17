@@ -87,20 +87,18 @@ export const CartProvider = ({ children }) => {
             return;
         }
 
-        const waNumber = "2349137671904"; // Ensure this is correct (include country code if needed, e.g., "2349137671904" without + or 0 sometimes works better internationally, but 091... is fine for local NG)
+        const waNumber = "2349137671904";
 
-        const message = getWhatsAppMessage(); // ← Assuming this returns a string like "Hi! My cart:\nItem1 x2 - ₦2000\nTotal: ₦4000\nLink: https://your-vercel-app.vercel.app/cart"
+        // getWhatsAppMessage already calls encodeURIComponent() internally
+        const encodedMessage = getWhatsAppMessage();
 
-        // Always encode the full message
-        const encodedMessage = encodeURIComponent(message);
-
+        // Don't wrap encodedMessage in encodeURIComponent again here
         const url = `https://wa.me/${waNumber}?text=${encodedMessage}`;
 
-        // Open in new tab/window with security attrs (helps iOS)
         window.open(url, "_blank", "noopener,noreferrer");
-
-        setShowCart(false); // Close drawer
+        setShowCart(false);
     };
+
 
     const value = {
         cart,

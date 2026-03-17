@@ -87,18 +87,13 @@ export const CartProvider = ({ children }) => {
             return;
         }
 
-        const waNumber = "2349137671904";
-
-        // getWhatsAppMessage already calls encodeURIComponent() internally
-        const encodedMessage = getWhatsAppMessage();
-
-        // Don't wrap encodedMessage in encodeURIComponent again here
-        const url = `https://wa.me/${waNumber}?text=${encodedMessage}`;
+        const waNumber = "2349137671904";// ← CHANGE THIS to client's real WhatsApp number
+        const message = getWhatsAppMessage();
+        const url = `https://wa.me/${waNumber}?text=${message}`;
 
         window.open(url, "_blank", "noopener,noreferrer");
-        setShowCart(false);
+        setShowCart(false); // Close drawer after opening WhatsApp
     };
-
 
     const value = {
         cart,

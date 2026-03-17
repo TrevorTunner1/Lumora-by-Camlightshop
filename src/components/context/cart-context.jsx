@@ -59,24 +59,24 @@ export const CartProvider = ({ children }) => {
     const getWhatsAppMessage = () => {
         if (cart.length === 0) return "";
 
-        let message = "Hello  / Lamoura Team!\n\n";
+        let message = "Hello Lamoura Team!\n\n";
         message += "I'm interested in the following items:\n\n";
 
         cart.forEach((item) => {
             const priceNum = parseFloat(item.price.replace(/,/g, ""));
             const subtotal = priceNum * item.quantity;
 
-            message += `• ${item.name}\n`;
-            message += `  Qty: ${item.quantity} × ₦${priceNum.toLocaleString()}\n`;
-            message += `  Subtotal: ₦${subtotal.toLocaleString()}\n\n`;
+            message += `- ${item.name}\n`;
+            message += `  Qty: ${item.quantity} x NGN ${priceNum.toLocaleString()}\n`;
+            message += `  Subtotal: NGN ${subtotal.toLocaleString()}\n\n`;
         });
 
         const grandTotal = cart.reduce((sum, item) => {
             return sum + parseFloat(item.price.replace(/,/g, "")) * item.quantity;
         }, 0);
 
-        message += `Total amount: ₦${grandTotal.toLocaleString()}\n\n`;
-        message += "Kindly confirm availability, delivery cost to Port Harcourt, and payment options.\nThank you!";
+        message += `Total: NGN ${grandTotal.toLocaleString()}\n\n`;
+        message += "Kindly confirm availability, delivery cost to Port Harcourt, and payment options. Thank you!";
 
         return encodeURIComponent(message);
     };
